@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>资源站 · 网盘目录</title>
+<meta name="description" content="整理自 UC 网盘公开分享的资源目录：系统镜像、图书、壁纸、系统美化、编程资料与软件。">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7f6f2;color:#171716;font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;font-variant-numeric:tabular-nums}
+header.masthead{border-bottom:1px solid #e2ddd2;padding:56px 0 40px}
+.masthead .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:48px;flex-wrap:wrap}
+.headline{max-width:640px}
+.kicker{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.16em;color:#8a857b;margin-bottom:18px}
+.kicker .mono{letter-spacing:0;color:#a49d91;font-size:11px}
+h1{font-size:52px;line-height:1.08;margin:0 0 14px;font-weight:700;letter-spacing:.02em}
+.lede{margin:0;color:#57534b;font-size:15px;max-width:560px}
+.open{display:inline-block;margin-top:24px;background:#2c4a3e;color:#f7f6f2;padding:9px 17px;font-size:13px;letter-spacing:.02em}
+.open:hover{background:#223b31}
+.stats{display:flex;gap:38px;margin:0;padding-bottom:4px}
+.stats>div{border-left:1px solid #ddd8cd;padding-left:15px}
+.stats dt{font-size:11px;letter-spacing:.1em;color:#8a857b}
+.stats dd{margin:3px 0 0;font-family:Georgia,"Times New Roman",serif;font-size:23px;font-weight:500;font-variant-numeric:tabular-nums}
+nav.toc{position:sticky;top:0;z-index:20;background:#f7f6f2;border-bottom:1px solid #e2ddd2}
+nav.toc .wrap{display:flex;align-items:center;gap:26px;min-height:56px}
+.toc-links{display:flex;gap:22px;overflow-x:auto;font-size:13px;color:#57534b;scrollbar-width:none}
+.toc-links::-webkit-scrollbar{display:none}
+.toc-links a{white-space:nowrap;padding:5px 0;border-bottom:1px solid transparent}
+.toc-links a:hover,.toc-links a.active{color:#2c4a3e;border-color:#2c4a3e}
+.search{margin-left:auto;display:flex;align-items:center;gap:8px}
+.search input{width:184px;border:1px solid #ddd8cd;background:#fdfdfb;padding:6px 10px;font-size:13px;font-family:inherit;color:#171716;outline:none}
+.search input:focus{border-color:#2c4a3e}
+.search kbd{font-family:"SFMono-Regular",Consolas,monospace;font-size:11px;color:#a49d91;border:1px solid #ddd8cd;padding:1px 5px;line-height:1.4}
+main{padding:4px 0 12px}
+section.cat{padding:46px 0 10px;border-bottom:1px solid #e2ddd2}
+.cat-head{display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:start}
+.cat-no{font-family:Georgia,serif;font-size:13px;color:#b0a99d;padding-top:7px}
+h2{margin:0;font-size:24px;line-height:1.3;font-weight:650;letter-spacing:.01em}
+.cat-desc{margin:6px 0 0;color:#6b665d;font-size:13px;max-width:640px}
+.cat-meta{font-size:12px;color:#8a857b;text-align:right;padding-top:8px;white-space:nowrap}
+.rows{margin-top:18px;border-top:1px solid #e2ddd2}
+.row{display:grid;grid-template-columns:206px 1fr 82px;gap:22px;padding:15px 2px;border-bottom:1px solid #e7e3da;align-items:start;transition:background .12s ease}
+.row:hover{background:#efede6}
+.row-name{font-size:15px;font-weight:600;line-height:1.5}
+.row-name small{display:block;font-size:12px;font-weight:400;color:#8a857b;margin-top:2px}
+.row-desc{color:#57534b;font-size:13px;line-height:1.7;padding-top:1px}
+.row-go{text-align:right;font-size:12px;padding-top:2px;white-space:nowrap}
+.row-go a{color:#2c4a3e;border-bottom:1px solid transparent}
+.row:hover .row-go a{border-color:#2c4a3e}
+.row-go .none{color:#b0a99d}
+.row.disabled{opacity:.72}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.chip{display:inline-block;border:1px solid #ddd8cd;background:#fbfaf7;padding:2px 8px;font-size:12px;color:#57534b;line-height:1.6}
+span.chip{cursor:default}
+a.chip{color:#2c4a3e;border-color:#c9d1c6;background:#f2f4f0}
+a.chip:hover{border-color:#2c4a3e;background:#e9ede6}
+details.classify{margin-top:8px}
+details.classify summary{display:inline-flex;align-items:center;gap:7px;cursor:pointer;font-size:12px;color:#2c4a3e;list-style:none}
+details.classify summary::-webkit-details-marker{display:none}
+details.classify summary::before{content:"+";font-family:"SFMono-Regular",Consolas,monospace;font-size:12px;color:#8a857b}
+details.classify[open] summary::before{content:"\2212"}
+.group-label{margin:26px 0 0;padding-top:16px;border-top:1px dashed #ddd8cd;font-size:11px;letter-spacing:.16em;color:#a49d91}
+.rows>.group-label:first-child{margin-top:0;border-top:0;padding-top:2px}
+.empty{margin:18px 0 4px;font-size:13px;color:#8a857b}
+.is-hidden{display:none!important}
+footer{border-top:1px solid #e2ddd2;padding:30px 0 64px;color:#8a857b;font-size:12.5px}
+footer p{margin:0 0 7px;max-width:780px}
+footer .mono{color:#a49d91;margin-top:14px}
+@media (max-width:820px){
+  .wrap{padding:0 20px}
+  header.masthead{padding:38px 0 28px}
+  h1{font-size:38px}
+  .masthead .wrap{gap:26px}
+  .stats{gap:24px}
+  .stats dd{font-size:19px}
+  nav.toc .wrap{flex-wrap:wrap;padding-top:8px;padding-bottom:8px;gap:10px}
+  .search{width:100%;margin-left:0}
+  .search input{width:auto;flex:1}
+  .search kbd{display:none}
+  section.cat{padding:36px 0 8px}
+  .cat-head{grid-template-columns:36px 1fr;gap:10px}
+  .cat-meta{grid-column:2;text-align:left;padding-top:0;white-space:normal;margin-top:4px}
+  .row{grid-template-columns:1fr;gap:6px;padding:14px 2px}
+  .row-go{text-align:left;padding-top:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+:focus-visible{outline:2px solid #2c4a3e;outline-offset:2px}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="headline">
+      <div class="kicker"><span>资源站 · 公开分享</span></div>
+      <h1>资源站</h1>
+      <p class="lede">系统镜像、图书、壁纸、软件和开发工具的目录索引。每个条目直接指向网盘里的文件夹</p>
+      <a class="open" href="https://space.bilibili.com/3546925812943471" target="_blank" rel="noopener">BiliBili ↗</a>
+    </div>
+</header>
+<nav class="toc" aria-label="分类导航">
+  <div class="wrap">
+    <div class="toc-links">
+      <a href="#os">系统镜像</a>
+      <a href="#lib">图书馆</a>
+      <a href="#gal">图库</a>
+      <a href="#beauty">系统美化</a>
+      <a href="#code">编程</a>
+      <a href="#soft">软件</a>
+    </div>
+    <label class="search"><input id="q" type="search" placeholder="筛选条目" aria-label="筛选条目"></label>
+  </div>
+</nav>
+<main class="wrap">
+<section class="cat" id="os">
+  <div class="cat-head">
+    <div class="cat-no">01</div>
+    <div class="cat-title">
+      <h2>系统镜像</h2>
+      <p class="cat-desc">Windows、Linux、PE 与移动系统。原版镜像按版本归档，另有集成补丁和网络收集版。</p>
+    </div>
+    <div class="cat-meta">6 个子目录 · 更新于 2026-06-21</div>
+  </div>
+  <div class="rows"><div class="row" data-k="windows 系统 镜像 iso 原版 集成补丁 网络收集"><div class="row-name">Windows<small>5 个子目录</small></div><div class="row-desc">原版镜像来自 MSDN「I tell you」，另有集成补丁版和网络收集的旧版本。网络收集里有 98、XP、7、8/8.1、Server 2022 和甘城定制版 11。<div class="chips"><a class="chip" href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/78e9b40ce8cc4e66ad0edac9cd1fdbce-Windows/b8595d8ff0c74f0cb020e16b1877b964-%E5%8E%9F%E7%89%88%EF%BC%88%E6%9D%A5%E8%87%AAI%20tell%20you%EF%BC%89" target="_blank" rel="noopener">原版 XP–Server 2025</a><a class="chip" href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/78e9b40ce8cc4e66ad0edac9cd1fdbce-Windows/6829ff000ef94e8486d484ce208be491-%E9%9B%86%E6%88%90%E8%A1%A5%E4%B8%81%E7%89%88" target="_blank" rel="noopener">集成补丁版</a><a class="chip" href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/78e9b40ce8cc4e66ad0edac9cd1fdbce-Windows/a72a434078d34ccfaa3a42c19caa79d0-%E7%BD%91%E7%BB%9C%E6%94%B6%E9%9B%86" target="_blank" rel="noopener">网络收集</a><a class="chip" href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/78e9b40ce8cc4e66ad0edac9cd1fdbce-Windows/418be37176114ce680a23450bb3f3c8e-PE%E7%B3%BB%E7%BB%9F" target="_blank" rel="noopener">PE 系统</a><a class="chip" href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/78e9b40ce8cc4e66ad0edac9cd1fdbce-Windows/40a99dfdf1ca4e26aa992b7eaefdec5d-Windows%E5%86%85%E9%83%A8%E9%A2%84%E8%A7%88%E7%89%88%20%C2%B7%20Windows%20Insider%20Preview" target="_blank" rel="noopener">Insider 预览</a></div></div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/78e9b40ce8cc4e66ad0edac9cd1fdbce-Windows" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="linux arch nyarch catos"><div class="row-name">Linux<small>1 个子目录</small></div><div class="row-desc">Arch 系衍生版：NyarchLinux、CatOS。<div class="chips"><a class="chip" href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/0b1f68d6e8804b91b5625ad4392dc26a-Linux/f1c63eba580947a5bc806b2ebe7b148b-Arch%E7%B3%BB" target="_blank" rel="noopener">Arch系</a></div></div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/0b1f68d6e8804b91b5625ad4392dc26a-Linux" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="pe 维护盘 工具箱 easyu hotpe firpe sunpe"><div class="row-name">PE 工具箱<small>5 个文件</small></div><div class="row-desc">EasyU 3.7、HotPE 2.8 / v25.08、FirPE 2.0.3、SunPE v25.08、苏维埃 PE 工具箱 1.4.2。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/32b751878b124079a8b515ad6dc0c785-PE" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="android x86 iso 虚拟机"><div class="row-name">Android x86<small>2 个 ISO</small></div><div class="row-desc">android-x86_64 8.1-r6 与 Android 7.1 r5，适合虚拟机或老旧机器。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/45dfe5a191cc465cbb2b9f1c694b1460-Android" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="mac macos vmware 黑苹果 unlocker"><div class="row-name">Mac 与虚拟机<small>4 个文件</small></div><div class="row-desc">VMware Workstation 17.0.2、unlocker 4.2.6、macOS Big Sur 11.0.1 校验值与安装说明。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/350dfb4cac9f4763b9b9de18235c8ba1-Mac" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="其他 凝思 fydeos"><div class="row-name">其他系统<small>2 个子目录</small></div><div class="row-desc">凝思安全操作系统、FydeOS。<div class="chips"><a class="chip" href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/d2c4861ccd014c01af0f14d6745b7bcd-%E5%85%B6%E4%BB%96%20%C2%B7%20Others/38125ccd88d943708b7d9deffa6a3302-%E5%87%9D%E6%80%9D%E5%AE%89%E5%85%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F" target="_blank" rel="noopener">凝思安全操作系统</a><a class="chip" href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/d2c4861ccd014c01af0f14d6745b7bcd-%E5%85%B6%E4%BB%96%20%C2%B7%20Others/99f868738ced4dbdbd364dbe505c7708-Fyde" target="_blank" rel="noopener">Fyde</a></div></div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/b39e1212c72c4ded804724ee37df32f2-%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%20%C2%B7%20System%20Images/d2c4861ccd014c01af0f14d6745b7bcd-%E5%85%B6%E4%BB%96%20%C2%B7%20Others" target="_blank" rel="noopener">打开 ↗</a></div></div></div>
+  <p class="empty" hidden>没有匹配的条目。</p>
+</section>
+<section class="cat" id="lib">
+  <div class="cat-head">
+    <div class="cat-no">02</div>
+    <div class="cat-title">
+      <h2>图书馆</h2>
+      <p class="cat-desc">按中图法分类的电子书，包含大量影印古籍与 PDF。点分类进入对应文件夹。</p>
+    </div>
+    <div class="cat-meta">22 个分类 · 2,468 本</div>
+  </div>
+  <div class="rows"><div class="row" data-k="马克思主义、列宁主义、毛泽东思想、邓小平理论 A 图书 《马克思主义思想辞典》 / 毛泽东传（插图本）"><div class="row-name">A 马克思主义、列宁主义、毛泽东思想、邓小平理论<small>4 本</small></div><div class="row-desc">《马克思主义思想辞典》 / 毛泽东传（插图本）</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/bbb16c7e446d4bc7b33547d1fad0d099-A%20%E9%A9%AC%E5%85%8B%E6%80%9D%E4%B8%BB%E4%B9%89%E3%80%81%E5%88%97%E5%AE%81%E4%B8%BB%E4%B9%89%E3%80%81%E6%AF%9B%E6%B3%BD%E4%B8%9C%E6%80%9D%E6%83%B3%E3%80%81%E9%82%93%E5%B0%8F%E5%B9%B3%E7%90%86%E8%AE%BA" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="哲学、宗教 B 图书 心理学原来很有趣 / 《春秋繁露》明刊本"><div class="row-name">B 哲学、宗教<small>216 本</small></div><div class="row-desc">心理学原来很有趣 / 《春秋繁露》明刊本</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/5941ac8004b745ea828c0b9d80f42732-B%20%E5%93%B2%E5%AD%A6%E3%80%81%E5%AE%97%E6%95%99" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="社会科学总论 C 图书 方正学先生逊志斋集 / 颐志斋丛书"><div class="row-name">C 社会科学总论<small>45 本</small></div><div class="row-desc">方正学先生逊志斋集 / 颐志斋丛书</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/0cc2494f4e3b423e9c3d6ab0545c3468-C%20%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6%E6%80%BB%E8%AE%BA" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="政治、法律 D 图书 中国共产党历史 / 御定洪翼靖公奏藁"><div class="row-name">D 政治、法律<small>110 本</small></div><div class="row-desc">中国共产党历史 / 御定洪翼靖公奏藁</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/2bb3e8a296134f54bb7254c5d93b3640-D%20%E6%94%BF%E6%B2%BB%E3%80%81%E6%B3%95%E5%BE%8B" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="军事 E 图书 二战英军步兵武器全集 / 筹海图编十三卷"><div class="row-name">E 军事<small>81 本</small></div><div class="row-desc">二战英军步兵武器全集 / 筹海图编十三卷</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/467ef703d8704f0ab2f9e5c49db708d3-E%20%E5%86%9B%E4%BA%8B" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="经济 F 图书 Excel 财务与会计从新手到高手 / 工业 4.0——概念、技术及演进案例"><div class="row-name">F 经济<small>138 本</small></div><div class="row-desc">Excel 财务与会计从新手到高手 / 工业 4.0——概念、技术及演进案例</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/3716ba5d2c4c43129a1a16fb034490f1-F%20%E7%BB%8F%E6%B5%8E" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="文化、科学、教育、体育 G 图书 高中学习资料 / 增修互注礼部韵略"><div class="row-name">G 文化、科学、教育、体育<small>57 本</small></div><div class="row-desc">高中学习资料 / 增修互注礼部韵略</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/377fa11df4f34c708d1dd6bd0c73b0d1-G%20%E6%96%87%E5%8C%96%E3%80%81%E7%A7%91%E5%AD%A6%E3%80%81%E6%95%99%E8%82%B2%E3%80%81%E4%BD%93%E8%82%B2" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="语言、文字 H 图书 康熙字典撮要 / 汉字就是这么来的（全 6 册）"><div class="row-name">H 语言、文字<small>31 本</small></div><div class="row-desc">康熙字典撮要 / 汉字就是这么来的（全 6 册）</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/1fafdfa8397e43cd82b03048797c85e8-H%20%E8%AF%AD%E8%A8%80%E3%80%81%E6%96%87%E5%AD%97" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="文学 I 图书 遮天 / 中国名联辞典"><div class="row-name">I 文学<small>358 本</small></div><div class="row-desc">遮天 / 中国名联辞典</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/cfe0ee0275774039b65740197f8644d2-I%20%E6%96%87%E5%AD%A6" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="艺术 J 图书 影视摄影技艺 / 实用简笔画"><div class="row-name">J 艺术<small>36 本</small></div><div class="row-desc">影视摄影技艺 / 实用简笔画</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/be512773dd7747cbb5b2a2f7a4ca22a6-J%20%E8%89%BA%E6%9C%AF" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="历史、地理 K 图书 虚构的犹太民族 / 德国通向希特勒独裁之路"><div class="row-name">K 历史、地理<small>247 本</small></div><div class="row-desc">虚构的犹太民族 / 德国通向希特勒独裁之路</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/19dd1561394046588f3c0396dff999c1-K%20%E5%8E%86%E5%8F%B2%E3%80%81%E5%9C%B0%E7%90%86" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="自然科学总论 N 图书 宇宙与时间的奥秘（全 8 册） / 泡利的错误"><div class="row-name">N 自然科学总论<small>7 本</small></div><div class="row-desc">宇宙与时间的奥秘（全 8 册） / 泡利的错误</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/ab95f8bf4f76446aa4e5af5c9b653307-N%20%E8%87%AA%E7%84%B6%E7%A7%91%E5%AD%A6%E6%80%BB%E8%AE%BA" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="数理科学和化学 O 图书 大学物理实验 / 高等数学进阶 2019"><div class="row-name">O 数理科学和化学<small>34 本</small></div><div class="row-desc">大学物理实验 / 高等数学进阶 2019</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/a644b5a5f8f244d7adda66b96630d472-O%20%E6%95%B0%E7%90%86%E7%A7%91%E5%AD%A6%E5%92%8C%E5%8C%96%E5%AD%A6" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="天文学、地球科学 P 图书 控制测量学 / 古代历法计算法"><div class="row-name">P 天文学、地球科学<small>12 本</small></div><div class="row-desc">控制测量学 / 古代历法计算法</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/029cf663444c45419c7023da33824a70-P%20%E5%A4%A9%E6%96%87%E5%AD%A6%E3%80%81%E5%9C%B0%E7%90%83%E7%A7%91%E5%AD%A6" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row disabled" data-k="生物科学 暂未收录"><div class="row-name">Q 生物科学<small>0 本</small></div><div class="row-desc">该类目暂未收录内容。</div><div class="row-go"><span class="none">暂无</span></div></div><div class="row" data-k="医药、卫生 R 图书 引痘方书 / 治痢经验"><div class="row-name">R 医药、卫生<small>189 本</small></div><div class="row-desc">引痘方书 / 治痢经验</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/63df51c35fc946cd8739c77a10a4ee17-R%20%E5%8C%BB%E8%8D%AF%E3%80%81%E5%8D%AB%E7%94%9F" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="农业科学 S 图书 1 小时科普·营养膳食指导 / 斯大林改造自然计划"><div class="row-name">S 农业科学<small>2 本</small></div><div class="row-desc">1 小时科普·营养膳食指导 / 斯大林改造自然计划</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/eb7f02f775b64687a61a02934f02e28a-S%20%E5%86%9C%E4%B8%9A%E7%A7%91%E5%AD%A6" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="工业技术 T 图书 电脑组装、维护、维修全能一本通 / 家传秘制老卤卤汁"><div class="row-name">T 工业技术<small>886 本</small></div><div class="row-desc">电脑组装、维护、维修全能一本通 / 家传秘制老卤卤汁</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/046fd4bde2f143d5a0ac4afd3116f877-T%20%E5%B7%A5%E4%B8%9A%E6%8A%80%E6%9C%AF" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row disabled" data-k="交通运输 暂未收录"><div class="row-name">U 交通运输<small>0 本</small></div><div class="row-desc">该类目暂未收录内容。</div><div class="row-go"><span class="none">暂无</span></div></div><div class="row disabled" data-k="环境科学、安全科学 暂未收录"><div class="row-name">X 环境科学、安全科学<small>0 本</small></div><div class="row-desc">该类目暂未收录内容。</div><div class="row-go"><span class="none">暂无</span></div></div><div class="row" data-k="综合性图书 Z 图书 初学记 / 读书斋丛书"><div class="row-name">Z 综合性图书<small>15 本</small></div><div class="row-desc">初学记 / 读书斋丛书</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/2948b1654b534f44a875f6e3848eeb7f-%E5%9B%BE%E4%B9%A6%E9%A6%86%20%C2%B7%20Library/a1f88e5ce5574494bc97f29581b6950f-Z%20%E7%BB%BC%E5%90%88%E6%80%A7%E5%9B%BE%E4%B9%A6" target="_blank" rel="noopener">打开 ↗</a></div></div></div>
+  <p class="empty" hidden>没有匹配的条目。</p>
+</section>
+<section class="cat" id="gal">
+  <div class="cat-head">
+    <div class="cat-no">03</div>
+    <div class="cat-title">
+      <h2>图库</h2>
+      <p class="cat-desc">壁纸与摄影作品，文件名带日期和作者。</p>
+    </div>
+    <div class="cat-meta">3 个子目录 · 更新于 2026-05-30</div>
+  </div>
+  <div class="rows"><div class="row" data-k="一卷图库 摄影 图片 壁纸"><div class="row-name">一卷图库<small>499 张</small></div><div class="row-desc">文件按「年月, 作者, 标题」命名，例如 2503,一程鹭,墨染.jpg。以摄影作品为主，按名称排序浏览。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/55b8225436c742ffbac1e1347fbc7d96-%E5%9B%BE%E5%BA%93%20%C2%B7%20Gallery/748c8b24fe994e2fb8e5ce1e2e6a4df4-%E4%B8%80%E5%8D%B7%E5%9B%BE%E5%BA%93" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="甘城 壁纸 图片"><div class="row-name">甘城壁纸<small>30 张</small></div><div class="row-desc">160.png、780.png 等编号壁纸，目录里另有 README 说明。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/55b8225436c742ffbac1e1347fbc7d96-%E5%9B%BE%E5%BA%93%20%C2%B7%20Gallery/410efa3b26894093b3373cf78659ec85-%E7%94%98%E5%9F%8E%E5%A3%81%E7%BA%B8" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="2233 图片"><div class="row-name">2233<small>1 个文本</small></div><div class="row-desc">目录里只有一份「请设置按文件名称排序」的说明，暂无图片。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/55b8225436c742ffbac1e1347fbc7d96-%E5%9B%BE%E5%BA%93%20%C2%B7%20Gallery/3ea45abf127a4c75b672aeaca79eed6c-2233" target="_blank" rel="noopener">打开 ↗</a></div></div></div>
+  <p class="empty" hidden>没有匹配的条目。</p>
+</section>
+<section class="cat" id="beauty">
+  <div class="cat-head">
+    <div class="cat-no">04</div>
+    <div class="cat-title">
+      <h2>系统美化</h2>
+      <p class="cat-desc">开始菜单、主题、动态壁纸、鼠标指针，以 Windows 和原神角色为主。</p>
+    </div>
+    <div class="cat-meta">6 个子目录 · 更新于 2026-05-30</div>
+  </div>
+  <div class="rows"><div class="row" data-k="甘城 美化 主题 壁纸 镜像"><div class="row-name">甘城なつき-文件分享<small>4 个子目录</small></div><div class="row-desc">镜像文件（推荐）、美化包、工具、壁纸，围绕甘城なつき主题整理。<div class="chips"><span class="chip">镜像文件（推荐）</span><span class="chip">美化包</span><span class="chip">工具</span><span class="chip">壁纸</span></div></div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/e1c6ca95c7d344f6b693d371223c3bdd-%E7%B3%BB%E7%BB%9F%E7%BE%8E%E5%8C%96%20%C2%B7%20System%20Beautification/b3703a5de72449039229cb4fd5e05928-%E7%94%98%E5%9F%8E%E3%81%AA%E3%81%A4%E3%81%8D-%E6%96%87%E4%BB%B6%E5%88%86%E4%BA%AB" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="美图 图包 原神 崩铁 绝区零"><div class="row-name">一些美图<small>28 个图包</small></div><div class="row-desc">1.1 至 1.25 的日期合集，以原神、崩坏：星穹铁道、绝区零角色图为主。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/e1c6ca95c7d344f6b693d371223c3bdd-%E7%B3%BB%E7%BB%9F%E7%BE%8E%E5%8C%96%20%C2%B7%20System%20Beautification/296eac66cb904278ba22b3a5de05bda1-%E4%B8%80%E4%BA%9B%E7%BE%8E%E5%9B%BE" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="windows 美化 start11 startallback 雨滴 开始菜单"><div class="row-name">Windows 美化<small>12 个工具</small></div><div class="row-desc">Start11 1.31、StartAllBack 3.7.11、雨滴桌面 4.5.16、Win10 开始菜单工具、主题破解工具等。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/e1c6ca95c7d344f6b693d371223c3bdd-%E7%B3%BB%E7%BB%9F%E7%BE%8E%E5%8C%96%20%C2%B7%20System%20Beautification/af351a26ed8a4af088452ebe26a6ea39-Windows" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="动态壁纸 mp4 原神 视频"><div class="row-name">动态壁纸<small>8 个 MP4</small></div><div class="row-desc">原神角色与动画循环壁纸，单个 7–74 MB。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/e1c6ca95c7d344f6b693d371223c3bdd-%E7%B3%BB%E7%BB%9F%E7%BE%8E%E5%8C%96%20%C2%B7%20System%20Beautification/0a8e88c6764e441c871591f256aed464-%E5%8A%A8%E6%80%81%E5%A3%81%E7%BA%B8%20%C2%B7%20Animated%20Wallpapers" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="手机壁纸 竖屏 图片"><div class="row-name">手机壁纸<small>20 张</small></div><div class="row-desc">编号 jpg，竖屏尺寸。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/e1c6ca95c7d344f6b693d371223c3bdd-%E7%B3%BB%E7%BB%9F%E7%BE%8E%E5%8C%96%20%C2%B7%20System%20Beautification/2400fa6f30144a56a76a3707bffab64c-%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="鼠标指针 cursor 主题"><div class="row-name">鼠标指针<small>1 个主题包</small></div><div class="row-desc">Windows Cursor Concept v2.2。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/e1c6ca95c7d344f6b693d371223c3bdd-%E7%B3%BB%E7%BB%9F%E7%BE%8E%E5%8C%96%20%C2%B7%20System%20Beautification/865f43bf19e54008a3d4f839707ce7d0-%E9%BC%A0%E6%A0%87%E6%8C%87%E9%92%88%20%C2%B7%20Mouse%20Pointer" target="_blank" rel="noopener">打开 ↗</a></div></div></div>
+  <p class="empty" hidden>没有匹配的条目。</p>
+</section>
+<section class="cat" id="code">
+  <div class="cat-head">
+    <div class="cat-no">05</div>
+    <div class="cat-title">
+      <h2>编程</h2>
+      <p class="cat-desc">开发环境、游戏引擎、逆向工具与竞赛资料。</p>
+    </div>
+    <div class="cat-meta">21 项 · 更新于 2026-05-29</div>
+  </div>
+  <div class="rows"><p class="group-label">开发环境</p><div class="row" data-k="python 安装包 环境"><div class="row-name">Python<small>23 个安装包</small></div><div class="row-desc">Python 3.5 到 3.14 的 Windows 安装程序。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/8ddfc5a291284f72bfb66e008ad28542-Python" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="ide idea vscode visual studio"><div class="row-name">IDE<small>4 项</small></div><div class="row-desc">IntelliJ IDEA、VS Code 1.92、Visual Studio 安装器。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/47218ef55522490fb835af7e3788a1f2-IDE" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="git 版本控制"><div class="row-name">git工具<small>4 个版本</small></div><div class="row-desc">Git 2.45.2、2.50.0 等 64 位安装包。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/32118a6ef6ae491aace97d96fd4fbf54-git%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="adb platform tools android"><div class="row-name">platform-tools<small>1 项</small></div><div class="row-desc">Android SDK Platform Tools r34.0.1（Windows）。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/7a03d1fa240a4e1db1a8302a8ebb3c30-platform-tools_r34.0.1-windows" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="40code 编辑器 离线"><div class="row-name">40code 离线编辑器<small>10 个平台包</small></div><div class="row-desc">AppImage、exe、pacman 等格式，适合离线使用。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/23b4c1dab1034958bd089e0499b8ab6e-40code%E7%A6%BB%E7%BA%BF%E7%BC%96%E8%BE%91%E5%99%A8" target="_blank" rel="noopener">打开 ↗</a></div></div><p class="group-label">引擎与硬件</p><div class="row" data-k="unity 游戏引擎"><div class="row-name">Unity<small>5 项</small></div><div class="row-desc">Unity 2022.3.34f1c1 及 Unity Hub 安装包（Windows / macOS）。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/bd48cea4ef0c43628f13cf8007ec4434-Unity" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="godot 游戏引擎"><div class="row-name">godot<small>1 项</small></div><div class="row-desc">Godot 4.3。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/996cfa25afcd4e469a337d13d5b22f77-godot" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="logisim 硬件 电路"><div class="row-name">硬件设计<small>1 项</small></div><div class="row-desc">Logisim 2.7.1，数字电路模拟。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/47a18581c4cc4a55b771cee86115fcd8-%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">打开 ↗</a></div></div><p class="group-label">逆向与网络</p><div class="row" data-k="ida 逆向 反编译"><div class="row-name">IDA Pro X64 便携版<small>RAR · 318 MB</small></div><div class="row-desc">位于编程目录根部的压缩包。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="reshacker 资源 汉化"><div class="row-name">ResHacker<small>1 项</small></div><div class="row-desc">Resource Hacker 5.1.8.360 汉化版。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/76708a052fb342b5bf245216d2efbe3c-ResHacker%E5%8F%8D%E7%BC%96%E8%AF%91%E8%BD%AF%E4%BB%B6" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="nasm 汇编"><div class="row-name">nasm 2.15.05<small>1 项</small></div><div class="row-desc">Netwide Assembler，win64 版本。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/6552743a854d4249ad98b24ef3926374-nasm-2.15.05-win64" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="ftp filezilla"><div class="row-name">FTP<small>1 项</small></div><div class="row-desc">FileZilla 3.68.1 客户端 x64。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/6409dbb079eb4f1c890ba5c4af14c79b-FTP" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="bz1621"><div class="row-name">Bz1621<small>4 个文件</small></div><div class="row-desc">Bz.def、Bz.exe、BZres_us.dll 等。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/d26550467fde4f1a8e47054e96a3cc7b-Bz1621" target="_blank" rel="noopener">打开 ↗</a></div></div><p class="group-label">学习与模型</p><div class="row" data-k="信息学竞赛 oi acm 洛谷"><div class="row-name">信息学竞赛<small>12 个目录</small></div><div class="row-desc">ACM 入门、洛谷篇、外教篇等竞赛资料。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/16c8f916c4ab45958cbc045efe5c33eb-%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%AB%9E%E8%B5%9B" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="云原生 k8s 容器"><div class="row-name">云原生资料合集<small>31 项</small></div><div class="row-desc">入门基础手册、阿里系列、视频资料包等。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/1a67dda07e80443589de60e57540d0fd-%E4%BA%91%E5%8E%9F%E7%94%9F%E8%B5%84%E6%96%99%E5%90%88%E9%9B%86" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="tts 语音 模型"><div class="row-name">TTS模型<small>4 个目录</small></div><div class="row-desc">妮姬、原神、崩坏 3 等语音模型。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/28bf1b1129d64b8ab764aa7aa8686a0d-TTS%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="模型 naifu"><div class="row-name">模型<small>1 项</small></div><div class="row-desc">naifu.tar。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/7dd6197d25fc482b86ef41d251a118a5-%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="易语言 模块"><div class="row-name">易语言模块云仓库<small>8 个目录</small></div><div class="row-desc">鱼刺类、精易皮肤模块等。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding/51502f93dcd44e6a9cd22ad43a80fced-%E6%98%93%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9D%97%E4%BA%91%E4%BB%93%E5%BA%93" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="易语言 安装包"><div class="row-name">易语言<small>7Z · 316 MB</small></div><div class="row-desc">位于编程目录根部。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="scratch 少儿编程"><div class="row-name">Scratch Setup 3.6.0<small>EXE · 172 MB</small></div><div class="row-desc">Scratch 桌面版安装包。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="海龟编辑器 编程"><div class="row-name">海龟编辑器 2.7.3<small>EXE · 153 MB</small></div><div class="row-desc">x64 版本。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/4eaf43e218ed4a5990ca760eee8dbfc9-%E7%BC%96%E7%A8%8B%20%C2%B7%20Coding" target="_blank" rel="noopener">打开 ↗</a></div></div></div>
+  <p class="empty" hidden>没有匹配的条目。</p>
+</section>
+<section class="cat" id="soft">
+  <div class="cat-head">
+    <div class="cat-no">06</div>
+    <div class="cat-title">
+      <h2>软件</h2>
+      <p class="cat-desc">按平台归类的常用软件，Windows 分类最全。</p>
+    </div>
+    <div class="cat-meta">5 个平台 · 更新于 2026-05-29</div>
+  </div>
+  <div class="rows"><div class="row" data-k="windows 软件 工具 优化 浏览器 输入法 压缩 虚拟机"><div class="row-name">Windows<small>39 项 · 32 个分类</small></div><div class="row-desc">分类从系统工具到行业软件都有，另有 Blender、VSCode、OneDrive 等 7 个安装包。<details class="classify"><summary>展开 32 个分类</summary><div class="chips"><span class="chip">小工具</span><span class="chip">授课</span><span class="chip">桌面</span><span class="chip">优化</span><span class="chip">远程控制</span><span class="chip">虚拟机</span><span class="chip">压缩</span><span class="chip">硬盘</span><span class="chip">输入法</span><span class="chip">下载器</span><span class="chip">网盘</span><span class="chip">社交</span><span class="chip">视频制作</span><span class="chip">声音制作</span><span class="chip">浏览器</span><span class="chip">内网穿透</span><span class="chip">跑分</span><span class="chip">模拟器</span><span class="chip">环境</span><span class="chip">加速</span><span class="chip">办公</span><span class="chip">华为生态</span><span class="chip">代理</span><span class="chip">编辑器</span><span class="chip">播放器</span><span class="chip">Windows XP 适用</span><span class="chip">安全</span><span class="chip">Win11 加载图标</span><span class="chip">CorelDRAW</span><span class="chip">Blender</span><span class="chip">Kangle for Windows</span><span class="chip">StarWind</span></div></details></div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/6bc0905415b740f39059ddb36c985123-%E8%BD%AF%E4%BB%B6%20%C2%B7%20Software/353a4b1b72864e72b3996ca060b588c1-Windows" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="android 安卓 软件 apk 刷机"><div class="row-name">Android<small>15 项 · 14 个分类</small></div><div class="row-desc">漫画小说、刷机包、终端、模拟器、剪辑等，另有 1 个 APK。<details class="classify"><summary>展开 14 个分类</summary><div class="chips"><span class="chip">漫画小说</span><span class="chip">刷机包</span><span class="chip">终端</span><span class="chip">应用下载</span><span class="chip">远程控制</span><span class="chip">音乐与视频</span><span class="chip">验证器</span><span class="chip">网盘</span><span class="chip">社交</span><span class="chip">网络</span><span class="chip">工具</span><span class="chip">模拟器</span><span class="chip">剪辑</span><span class="chip">安卓 4 可用软件（部分）</span></div></details></div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/6bc0905415b740f39059ddb36c985123-%E8%BD%AF%E4%BB%B6%20%C2%B7%20Software/b88e5ea8d12c427ca0b5a6d6924fe5ec-Android" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="linux 软件 分类"><div class="row-name">Linux<small>9 个分类</small></div><div class="row-desc">远程控制、下载、网络、视频、社交、内网穿透、环境、办公、VMware。<details class="classify"><summary>展开 9 个分类</summary><div class="chips"><span class="chip">远程控制</span><span class="chip">下载</span><span class="chip">网络</span><span class="chip">视频</span><span class="chip">社交</span><span class="chip">内网穿透</span><span class="chip">环境</span><span class="chip">办公</span><span class="chip">VMware</span></div></details></div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/6bc0905415b740f39059ddb36c985123-%E8%BD%AF%E4%BB%B6%20%C2%B7%20Software/403bd1cb234e4ef9b97a1792677088ce-Linux" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="mac macos 软件 vmware"><div class="row-name">macOS<small>1 项</small></div><div class="row-desc">VMware。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/6bc0905415b740f39059ddb36c985123-%E8%BD%AF%E4%BB%B6%20%C2%B7%20Software/12c7dde7ea21495e881d068b46907ec0-Mac" target="_blank" rel="noopener">打开 ↗</a></div></div><div class="row" data-k="ios ipa 软件"><div class="row-name">iOS<small>1 个 IPA</small></div><div class="row-desc">菜鸟 8.10.805 去广告版。</div><div class="row-go"><a href="https://drive.uc.cn/s/4c2127b88ac04?public=1#/list/share/69f4a9e73d484d688055f52674a578fc-%E8%B5%84%E6%BA%90%E7%AB%99/6bc0905415b740f39059ddb36c985123-%E8%BD%AF%E4%BB%B6%20%C2%B7%20Software/459e83b20ff449b79dbe333a3d38458c-IOS" target="_blank" rel="noopener">打开 ↗</a></div></div></div>
+  <p class="empty" hidden>没有匹配的条目。</p>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <p>本站只做目录索引，不存储、不转载文件。内容由分享者维护。</p>
+    <p>部分资源可能因版权或平台审核无法访问；如需长期保存，请先「保存到我的网盘」再下载。</p>
+  </div>
+</footer>
+<script>
+(function(){
+  var q=document.getElementById('q');
+  if(q){
+    var rows=[].slice.call(document.querySelectorAll('.row'));
+    var apply=function(){
+      var v=q.value.trim().toLowerCase();
+      rows.forEach(function(r){
+        var k=(r.getAttribute('data-k')||'').toLowerCase();
+        r.classList.toggle('is-hidden', !!v && k.indexOf(v)<0);
+      });
+      document.querySelectorAll('section.cat').forEach(function(s){
+        var any=[].slice.call(s.querySelectorAll('.row')).some(function(r){return !r.classList.contains('is-hidden');});
+        var e=s.querySelector('.empty');
+        if(e) e.hidden=any;
+      });
+    };
+    q.addEventListener('input',apply);
+    document.addEventListener('keydown',function(e){
+      if(e.key==='/' && document.activeElement!==q){ e.preventDefault(); q.focus(); }
+    });
+  }
+  var links=[].slice.call(document.querySelectorAll('.toc-links a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));}).filter(Boolean);
+  if(secs.length){
+    var mark=function(){
+      var y=window.scrollY+110, cur=secs[0];
+      secs.forEach(function(s){ if(s.offsetTop<=y){ cur=s; } });
+      links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href')==='#'+cur.id); });
+    };
+    var tick=false;
+    window.addEventListener('scroll',function(){
+      if(tick) return;
+      tick=true;
+      requestAnimationFrame(function(){ mark(); tick=false; });
+    },{passive:true});
+    mark();
+  }
+})();
+</script>
+</body>
+</html>
